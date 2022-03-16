@@ -21,3 +21,18 @@ def solution(prices):
             #     answer[top[0]-1] = len(stack)
     
     return answer
+
+def solution(prices):
+    answer = [0]*len(prices)
+    stack = [(idx+1,i) for idx,i in enumerate(prices)]
+    while len(stack)>0:
+        top = stack.pop(0)
+        for idx,p in enumerate(stack):
+            if p[1]<top[1]:
+                ans = p[0]-top[0]
+                answer[top[0]-1]=ans 
+                break
+            if idx == len(stack)-1:
+                answer[top[0]-1] = len(stack)
+    
+    return answer
